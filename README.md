@@ -164,23 +164,31 @@ Terminal -> Run Task
 
 ### **Docker**
 
-1. Executar comando na **raiz** do projeto:
+1. Preencher variáveis de ambiente no arquivo **docker-compose-override.yml** caso utilize autenticação no seu projeto:
+
+```
+    environment:
+      - WizID:Authority=URL_SSO
+      - WizID:Audience=URL_SSO
+```
+
+2. Executar comando na **raiz** do projeto:
 
 > *docker-compose up -d*
 
-2. Se fizer alterações no prjeto precisará buildar novamente a imagem que foi criada:
+3. Se fizer alterações no prjeto precisará buildar novamente a imagem que foi criada:
 
 > *docker-compose up -d --build*
 
-3. logs de execução:
+4. logs de execução:
 
 > *docker-compose logs*
 
-4. Parar e remover container:
+5. Parar e remover container:
 
 > *docker-compose down*
 
-5. O container da api irá rodar em **(HTTP)** o chrome pode esta configurado para redirecionar requisições http para https, se isso estiver acontecendo execute os passos abaixo:
+6. O container da api irá rodar em **(HTTP)** o chrome pode esta configurado para redirecionar requisições http para https, se isso estiver acontecendo execute os passos abaixo:
 + chrome://net-internals/#hsts - copie e cole na barra de pesquisa do chrome.
 + Em **Delete domain security policies**, digite localhost e clique em delete.
 
