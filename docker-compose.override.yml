@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+
+  api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+
+      - WizID:Authority=https://sso-hml-web.azurewebsites.net
+      - WizID:Audience=https://sso-hml-web.azurewebsites.net/resources
+      - ConnectionStrings:CustomerDB=Server=db-customer;Database=Customer;User Id=sa;Password=P@ssw0rd2020;
+      - HealthChecks-UI:HealthChecks:Name=Customer DB Health
+      - HealthChecks-UI:HealthChecks:http://localhost:8000/health
+      - HealthChecks-UI:Webhooks=[]
+      - HealthChecks-UI:EvaluationTimeOnSeconds=30
+      - HealthChecks-UI:MinimumSecondsBetweenFailureNotifications=60
+      
+    ports:
+      - 8000:80
+      
+  db:
+    ports:
+      - "1433:1433"

@@ -1,0 +1,26 @@
+version: '3.4'
+
+networks:
+  rede-api:
+  rede-banco:
+
+services:
+  api:
+    container_name: api-data-driven
+    image: ${DOCKER_REGISTRY-}wiz-template-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    networks:
+      - rede-api
+      - rede-banco
+
+  db:
+    container_name: db-customer
+    image: db-customer
+    build: ./scripts
+    networks:
+      - rede-banco
+
