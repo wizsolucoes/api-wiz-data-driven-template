@@ -6,8 +6,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+
-      - WizID:Authority=https://sso-hml-web.azurewebsites.net
-      - WizID:Audience=https://sso-hml-web.azurewebsites.net/resources
+      - WizID:Authority=URL_SSO
+      - WizID:Audience=URL_SSO
       - ConnectionStrings:CustomerDB=Server=db-customer;Database=Customer;User Id=sa;Password=P@ssw0rd2020;
       - HealthChecks-UI:HealthChecks:Name=Customer DB Health
       - HealthChecks-UI:HealthChecks:http://localhost:8000/health
